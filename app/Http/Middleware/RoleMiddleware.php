@@ -11,15 +11,16 @@ class RoleMiddleware
 {
     /**
      * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, $role): Response
+    public function handle(Request $request, Closure $next, ...$roles): Response
     {
         $user = Auth::user();
-        if ($user->role !== $role) {
+
+        // Cek apakah user login dan rolenya termasuk di salah satu yang diperbolehkan
+        if (!$user || !in_array($user->role, $roles)) {
             return response('Unauthorized.', 403);
         }
+
         return $next($request);
     }
 }

@@ -23,15 +23,30 @@
             <ul class="nav nav-sidebar flex-column">
                 <!-- ROLE ADMIN -->
                 @if (request()->is('admin*'))
-                    <li class="nav-item">
-                        <a href="{{ route('admin.dashboard') }}" class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>
-                                Dashboard Admin
-                            </p>
-                        </a>
-                    </li>
-                @endif
+    <li class="nav-item">
+        <a href="{{ route('admin.dashboard') }}" 
+           class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>Dashboard Admin</p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="{{ route('polis.index') }}" 
+           class="nav-link {{ request()->routeIs('polis.*') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-hospital"></i>
+            <p>Manajemen Poli</p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="{{ route('admin.dokter.index') }}" 
+           class="nav-link {{ request()->routeIs('admin.dokter.*') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-user-md"></i>
+            <p>Manajemen Dokter</p>
+        </a>
+    </li>
+@endif
 
                 <!-- ROLE PASIEN -->
                 @if (request()->is('pasien*'))
@@ -40,6 +55,14 @@
                             <i class="nav-icon fas fa-columns"></i>
                             <p>
                                 Dashboard Pasien
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('pasien.dashboard') }}" class="nav-link {{ request()->routeIs('pasien.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-user-injured"></i>
+                            <p>
+                                Management Pasien
                             </p>
                         </a>
                     </li>
@@ -52,6 +75,14 @@
                             <i class="nav-icon fas fa-columns"></i>
                             <p>
                                 Dashboard Dokter
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('dokter.index') }}" class="nav-link {{ request()->routeIs('dokter.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-user-md"></i>
+                            <p>
+                                Management Dokter
                             </p>
                         </a>
                     </li>
@@ -74,5 +105,3 @@
         </form> --}}
     </div>
 </aside>
-...
-Menampilkan sidebarr.txt.
