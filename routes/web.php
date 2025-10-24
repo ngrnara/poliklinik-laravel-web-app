@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\PoliController;
 use App\Http\Controllers\Admin\DokterController;
+use App\Http\Controllers\Admin\PasienController;
+use App\Http\Controllers\Admin\ObatController;
 
 
 Route::get('/', function () {
@@ -25,6 +27,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/dashboard', fn() => view('admin.dashboard'))->name('admin.dashboard');
         Route::resource('polis', PoliController::class);
         Route::resource('dokter', DokterController::class)->names('admin.dokter');
+        Route::resource('pasien', PasienController::class);
+        Route::resource('obat', ObatController::class);
     });
 });
 
