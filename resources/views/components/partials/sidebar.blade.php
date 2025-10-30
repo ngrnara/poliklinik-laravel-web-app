@@ -75,14 +75,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('pasien.dashboard') }}" class="nav-link {{ request()->routeIs('pasien.*') ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-user-injured"></i>
-                            <p>
-                                Management Pasien
-                            </p>
-                        </a>
-                    </li>
-                @endif
+                            <a href="{{ route('pasien.daftar') }}" class="nav-link {{ request()->routeIs('pasien.daftar') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-hospital-user"></i>
+                                <p>Daftar Poli</p>
+                            </a>
+                        </li>
+                        @endif
 
                 <!-- ROLE DOKTER -->
                 @if (request()->is('dokter*'))
@@ -95,10 +93,10 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('dokter.index') }}" class="nav-link {{ request()->routeIs('dokter.*') ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-user-md"></i>
+                        <a href="{{ route('dokter.jadwal-periksa.index') }}" class="nav-link {{ request()->routeIs('dokter.jadwal-periksa.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-calendar-alt"></i>
                             <p>
-                                Management Dokter
+                                Jadwal Periksa
                             </p>
                         </a>
                     </li>
