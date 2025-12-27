@@ -84,23 +84,52 @@
 
                 <!-- ROLE DOKTER -->
                 @if (request()->is('dokter*'))
-                    <li class="nav-item">
-                        <a href="{{ route('dokter.dashboard') }}" class="nav-link {{ request()->routeIs('dokter.dashboard') ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-columns"></i>
-                            <p>
-                                Dashboard Dokter
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('dokter.jadwal-periksa.index') }}" class="nav-link {{ request()->routeIs('dokter.jadwal-periksa.*') ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-calendar-alt"></i>
-                            <p>
-                                Jadwal Periksa
-                            </p>
-                        </a>
-                    </li>
-                @endif
+    <li class="nav-item">
+        <a href="{{ route('dokter.dashboard') }}"
+           class="nav-link {{ request()->routeIs('dokter.dashboard') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-columns"></i>
+            <p>Dashboard Dokter</p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="{{ route('dokter.jadwal-periksa.index') }}"
+           class="nav-link {{ request()->routeIs('dokter.jadwal-periksa.*') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-calendar-alt"></i>
+            <p>Jadwal Periksa</p>
+        </a>
+    </li>
+
+    {{-- PERIKSA PASIEN --}}
+    <li class="nav-item">
+        <a href="{{ route('dokter.periksa-pasien.index') }}"
+           class="nav-link {{
+                request()->routeIs(
+                    'dokter.periksa-pasien.index',
+                    'dokter.periksa-pasien.create'
+                ) ? 'active' : ''
+           }}">
+            <i class="nav-icon fas fa-stethoscope"></i>
+            <p>Periksa Pasien</p>
+        </a>
+    </li>
+
+    {{-- RIWAYAT PASIEN --}}
+    <li class="nav-item">
+        <a href="{{ route('dokter.riwayat-pasien.index') }}"
+           class="nav-link {{
+                request()->routeIs(
+                    'dokter.riwayat-pasien.*'
+                )
+                || request()->is('dokter/periksa-pasien/*/riwayat')
+                ? 'active'
+                : ''
+           }}">
+            <i class="nav-icon fas fa-history"></i>
+            <p>Riwayat Pasien</p>
+        </a>
+    </li>
+@endif
 
                 <li class="nav-item ">
                     <form method="POST" action="/logout">

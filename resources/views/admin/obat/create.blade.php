@@ -21,7 +21,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
                                         <label for="kemasan" class="form-label">Kemasan <span class="text-danger">*</span></label>
-                                        <input type="kemasan" class="form-control @error('kemasan') is-invalid @enderror"
+                                        <input type="text" class="form-control @error('kemasan') is-invalid @enderror"
                                             id="kemasan" name="kemasan" value="{{ old('kemasan') }}" required>
                                         @error('kemasan')
                                             <div class="invalid-feedback">{{ $message }}</div>
@@ -41,8 +41,25 @@
                                         @enderror
                                     </div>
                                 </div>
+                             <!-- Stok -->
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">
+                                            Stok Awal <span class="text-danger">*</span>
+                                        </label>
+                                        <input type="number"
+                                            name="stok"
+                                            class="form-control @error('stok') is-invalid @enderror"
+                                            value="{{ old('stok', 0) }}"
+                                            min="0"
+                                            required>
+                                        @error('stok')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
                             </div>
-                                
+
                             
                             <div class="form-group mb-3">
                                 <button type="submit" class="btn btn-success">

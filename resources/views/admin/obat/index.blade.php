@@ -16,6 +16,15 @@
                 <a href="{{ route('obat.create') }}" class="btn btn-primary mb-3">
                     <i class="fas fa-plus"></i> Tambah Obat
                 </a>
+                @php
+    $obatMenipis = $obats->where('stok', '<=', 5)->where('stok', '>', 0)->count();
+@endphp
+
+@if ($obatMenipis > 0)
+    <div class="alert alert-warning">
+        ⚠️ Terdapat <strong>{{ $obatMenipis }}</strong> obat dengan stok menipis.
+    </div>
+@endif
 
                 <div class="table-responsive">
                     <table class="table table-bordered">
@@ -24,6 +33,7 @@
                                 <th>Nama Obat</th>
                                 <th>Kemasan</th>
                                 <th>Harga</th>
+                                <th>Stok</th>
                                 <th style="width: 150px;">Aksi</th>
                             </tr>
                         </thead>
@@ -33,6 +43,13 @@
                                     <td>{{ $obat->nama_obat }}</td>
                                     <td>{{ $obat->kemasan }}</td>
                                     <td>{{ 'Rp' . number_format($obat->harga, 0, ',', '.') }}</td>
+                                    <td>
+                                    @if ($obat->stok <= 0)
+                                        <span class="badge bg-danger">Habis</span>
+                                    @else
+                                        {{ $obat->stok }}
+                                    @endif
+                                </td>
                                     <td>
                                         <a href="{{ route('obat.edit', $obat->id) }}" class="btn btn-sm btn-warning">
                                             <i class="fas fa-edit"></i>Edit
@@ -45,6 +62,7 @@
                                             </button>
                                         </form>
                                     </td>
+                                    
                                 </tr>
                             @empty
                                 <tr>

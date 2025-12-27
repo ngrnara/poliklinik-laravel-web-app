@@ -2,14 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory; // Tambahkan ini
+use Illuminate\Database\Eloquent\Factories\HasFactory; 
 use Illuminate\Database\Eloquent\Model;
 
 class JadwalPeriksa extends Model
 {
-    use HasFactory; // Tambahkan ini
+    use HasFactory; 
 
-    // PERBAIKAN: Hapus tanda $ di awal baris ini
     protected $table = 'jadwal_periksa';
 
     protected $fillable = [
